@@ -31,7 +31,7 @@ export const BottomTabMenu = ({ navigation }) => {
       }}
     >
       <BottomTab.Screen
-        name="Публикації"
+        name="Публікації"
         component={PostsScreen}
         options={{
           headerShown: true,
