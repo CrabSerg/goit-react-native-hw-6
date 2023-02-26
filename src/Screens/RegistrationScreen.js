@@ -246,7 +246,7 @@ export const RegistrationScreen = ({ navigation }) => {
                     onFocus={() => setIsFocusedLogin(true)}
                     onBlur={() => setIsFocusedLogin(false)}
                     value={login}
-                    placeholder="Логин"
+                    placeholder="Логін"
                     textContentType={"emailAddress"}
                     cursorColor={"#BDBDBD"}
                     placeholderTextColor={"#BDBDBD"}
