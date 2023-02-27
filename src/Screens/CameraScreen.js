@@ -79,9 +79,10 @@ export const CameraScreen = ({ navigation }) => {
 
   if (photo) {
     const savePic = () => {
-      shareAsync(photo.uri).then(() => {
+      console.log("uriP12", photo);
+      // shareAsync(photo).then(() => {
         setPhoto(undefined);
-      });
+      // });
       navigation.navigate("Створити публікацію", {
         photo,
         location,

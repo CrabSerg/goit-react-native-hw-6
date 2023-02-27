@@ -27,6 +27,7 @@ import Location from "../assets/images/location.svg";
 import Trash from "../assets/images/trash.svg";
 
 export const CreatePostsScreen = ({ route, navigation }) => {
+  // console.log("qq", route.params)
   const [fontsLoaded] = useFonts({
     Roboto: require("../assets/fonts/Roboto-Regular.ttf"),
     RobotoMedium: require("../assets/fonts/Roboto-Medium.ttf"),
@@ -72,6 +73,7 @@ export const CreatePostsScreen = ({ route, navigation }) => {
   const uploadPostToServer = async () => {
     try {
       const imageRef = await uploadPhotoToServer(image);
+      console.log (imageRef, location, userId, login, regionName,postRef,title)
       const postRef = await addDoc(collection(firestore, "posts"), {
         photo: imageRef,
         title,
@@ -79,8 +81,10 @@ export const CreatePostsScreen = ({ route, navigation }) => {
         userId,
         login,
         regionName,
-        postRef,
+        // postRef,
       });
+      Alert.alert(`Ваша публікація пройшла успішно`);
+      navigation.navigate("Публікації");
     } catch (error) {
       console.log("error-message", error.message);
     }
@@ -91,14 +95,14 @@ export const CreatePostsScreen = ({ route, navigation }) => {
       Alert.alert(`Усі поля мають бути заповнені!`);
       return;
     }
-    Alert.alert(`Ваша публікація пройшла успішно`);
     uploadPostToServer();
+    // Alert.alert(`Ваша публікація пройшла успішно`);
     setImage();
     setTitle("");
     setLocation("");
     setRegionName("");
     Keyboard.dismiss();
-    navigation.navigate("Публікації");
+    // navigation.navigate("Публікації");
   };
 
   const onDelete = () => {
@@ -207,7 +211,7 @@ export const CreatePostsScreen = ({ route, navigation }) => {
                 value={
                   regionName
                     ? `${regionName[0].city}, ${regionName[0].country}`
-                    : ""
+                    : " "
                 }
                 textContentType={"location"}
                 placeholder="Місцевість..."
